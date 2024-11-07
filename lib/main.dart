@@ -18,14 +18,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue
+        primarySwatch: Colors.blue,
       ),
       home: Home(),
     );
   }
 }
-
-
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -35,51 +33,45 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-  final pages=[
-    Icon(Icons.people, size: 30,),
-    Icon(Icons.search, size: 30,),
-    Icon(Icons.notifications, size: 30,),
+  final pages = [
+    Icon(Icons.people, size: 30),
+    Icon(Icons.search, size: 30),
+    Icon(Icons.notifications, size: 30),
   ];
 
-
-  int index= 0;
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       backgroundColor: Colors.blue,
       appBar: AppBar(
         title: Text("Curved Navigation Bar"),
         backgroundColor: Colors.blue[300],
       ),
-
       bottomNavigationBar: CurvedNavigationBar(
-          items: pages,
+        items: pages,
         index: index,
-        onTap: (selctedIndex){
-            index = selctedIndex;
-
+        onTap: (selectedIndex) {
+          setState(() {
+            index = selectedIndex; // Ensure the UI refreshes when an item is tapped
+          });
         },
         height: 70,
         backgroundColor: Colors.transparent,
         animationDuration: Duration(milliseconds: 300),
       ),
-
       body: Container(
         color: Colors.blue,
         width: double.infinity,
         height: double.infinity,
         alignment: Alignment.center,
-       child: getSelectedWidget(index: index),
+        child: getSelectedWidget(index: index),
       ),
-
     );
   }
 
   Widget getSelectedWidget({required int index}) {
-
     Widget widget;
 
     switch (index) {
@@ -92,14 +84,11 @@ class _HomeState extends State<Home> {
       case 2:
         widget = Notificationss();
         break;
-
       default:
-        widget= Notificationss();
+        widget = Notificationss();
         break;
     }
 
     return widget;
   }
-
 }
-
