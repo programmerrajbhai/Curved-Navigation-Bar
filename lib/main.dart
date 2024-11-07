@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
     Icon(Icons.notifications, size: 30),
   ];
 
-  int index = 0;
+  int index = 1;
 
   @override
   Widget build(BuildContext context) {
